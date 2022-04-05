@@ -28,7 +28,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
 import { searchSkill } from '@/services/esco'
 import { SearchResult, Type } from '@/models/esco'
 import { Skill } from '@/models/domain'
-import SkillCard from '@/components/ui/SkillCard.vue'
+import SkillCard from '@/components/SkillCard.vue'
 
 @Component({ components: { SkillCard } })
 export default class SkillFinder extends Vue {

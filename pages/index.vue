@@ -26,14 +26,14 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import SkillFinder from '@/components/skillFinder.vue'
-import SkillCard from '@/components/ui/SkillCard.vue'
+import SkillCard from '@/components/SkillCard.vue'
 import { Skill } from '@/models/domain'
 
 @Component({ components: { SkillFinder, SkillCard } })
 export default class Home extends Vue {
   skills: Skill[] = []
 
-  get skillsUri() {
+  get skillsUri(): Set<string> {
     const uris: string[] = this.skills.map((s) => s.uri)
     return new Set(uris)
   }
