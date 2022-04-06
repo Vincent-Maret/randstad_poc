@@ -51,10 +51,10 @@ export default class SkillFinder extends Vue {
       }
 
       if (e.broaderHierarchyConcept) {
-        skill.broaderHierarchyConcept = new Set(e.broaderHierarchyConcept)
+        skill.broaderHierarchyConcept = e.broaderHierarchyConcept
       }
       if (e.broaderSkill) {
-        skill.broaderSkill = new Set(e.broaderSkill)
+        skill.broaderSkill = e.broaderSkill
       }
 
       return skill

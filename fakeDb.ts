@@ -17,20 +17,32 @@ export const jobOffers: JobOffer[] = [
     title: 'DÉVELOPPEUR OUTILS DEVOPS (H/F) EN CDI',
     skills: [
       {
-        title: 'Jenkins (tools for software configuration management)',
-        uri: 'http://data.europa.eu/esco/skill/f47a1998-0beb-43be-9f46-380aa4d183da',
-      },
-      {
         title: 'cloud technologies',
         uri: 'http://data.europa.eu/esco/skill/bd14968e-e409-45af-b362-3495ed7b10e0',
+        broaderHierarchyConcept: ['http://data.europa.eu/esco/isced-f/0612'],
       },
       {
-        title: 'monitor system performance',
-        uri: 'http://data.europa.eu/esco/skill/9190d87f-9792-42e0-bb7f-64294a656bcd',
+        title: 'Jenkins (tools for software configuration management)',
+        uri: 'http://data.europa.eu/esco/skill/f47a1998-0beb-43be-9f46-380aa4d183da',
+        broaderHierarchyConcept: ['http://data.europa.eu/esco/isced-f/0613'],
+        broaderSkill: [
+          'http://data.europa.eu/esco/skill/9d2e926f-53d9-41f5-98f3-19dfaa687f3f',
+        ],
       },
       {
         title: 'maintain database',
         uri: 'http://data.europa.eu/esco/skill/0df2e216-68ae-4952-b9dc-3c2f2bc04fe3',
+        broaderHierarchyConcept: ['http://data.europa.eu/esco/skill/S5.5.2'],
+        broaderSkill: [
+          'http://data.europa.eu/esco/skill/611ed16b-99bf-4840-9cab-f55d1d286e0a',
+          'http://data.europa.eu/esco/skill/4463a721-69f3-413d-8321-43e3af13a4f1',
+          'http://data.europa.eu/esco/skill/19ba11f3-9c99-41fd-a7c9-f77e6a026186',
+        ],
+      },
+      {
+        title: 'database',
+        uri: 'http://data.europa.eu/esco/skill/43ae58b9-5e56-4524-b45a-b422777a0576',
+        broaderHierarchyConcept: ['http://data.europa.eu/esco/isced-f/0612'],
       },
     ],
 

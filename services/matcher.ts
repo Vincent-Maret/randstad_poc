@@ -21,10 +21,10 @@ function formatSkills(skills: Skill[]): {
 
   for (const skill of skills) {
     if (skill.broaderHierarchyConcept) {
-      broaderSkills.concat([...skill.broaderHierarchyConcept])
+      broaderSkills.concat(skill.broaderHierarchyConcept)
     }
     if (skill.broaderSkill) {
-      broaderSkills.concat([...skill.broaderSkill])
+      broaderSkills.concat(skill.broaderSkill)
     }
   }
 
