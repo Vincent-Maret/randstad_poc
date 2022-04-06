@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import { Vue, Component } from 'nuxt-property-decorator'
 import SkillFinder from '@/components/skillFinder.vue'
 import SkillCard from '@/components/skillCard.vue'
 import { Skill } from '@/models/domain'
