@@ -44,10 +44,21 @@ export default class SkillFinder extends Vue {
       return []
     }
 
-    return this.searchResult._embedded.results.map((e) => ({
-      title: e.title,
-      uri: e.uri,
-    }))
+    return this.searchResult._embedded.results.map((e) => {
+      const skill: Skill = {
+        title: e.title,
+        uri: e.uri,
+      }
+
+      if (e.broaderHierarchyConcept) {
+        skill.broaderHierarchyConcept = new Set(e.broaderHierarchyConcept)
+      }
+      if (e.broaderSkill) {
+        skill.broaderSkill = new Set(e.broaderSkill)
+      }
+
+      return skill
+    })
   }
 
   async search(): Promise<void> {
