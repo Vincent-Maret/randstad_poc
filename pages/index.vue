@@ -29,7 +29,7 @@ import SkillFinder from '@/components/skillFinder.vue'
 import SkillCard from '@/components/skillCard.vue'
 import { Skill } from '@/models/domain'
 
-@Component({ components: { SkillFinder, SkillCard } })
+@Component({ layout: 'dashboard', components: { SkillFinder, SkillCard } })
 export default class Home extends Vue {
   skills: Skill[] = []
 
