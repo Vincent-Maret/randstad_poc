@@ -9,7 +9,7 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { JobOffer } from '@/fakeDb'
+import { JobOffer } from '@/models/domain'
 
 @Component
 export default class JobCard extends Vue {

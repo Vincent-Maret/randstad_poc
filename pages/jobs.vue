@@ -6,21 +6,22 @@
 
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator'
-import { jobOffers, JobOffer } from '@/fakeDb'
 import JobCard from '@/components/jobCard.vue'
 import { getJobsMatchingScore } from '@/services/matcher'
-import { Score, Skill } from '@/models/domain'
+import { getJobOffers } from '@/services/nocodb'
+import { Score, Skill, JobOffer } from '@/models/domain'
 
 @Component({ layout: 'dashboard', components: { JobCard } })
 export default class Jobs extends Vue {
-  jobOffers: JobOffer[] = jobOffers
+  jobOffers: JobOffer[] = []
   matchingScores: Score[] = []
 
   get userSkills(): Skill[] {
     return this.$store.state.userSkills
   }
 
-  mounted(): void {
+  async mounted(): Promise<void> {
+    this.jobOffers = await getJobOffers()
     this.matchingScores = getJobsMatchingScore(this.userSkills, this.jobOffers)
   }
 }

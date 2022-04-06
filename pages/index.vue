@@ -18,7 +18,7 @@
     </div>
     <div>
       <h2>Add skills</h2>
-      <SkillFinder :forbidden-skills="skillsUri" />
+      <SkillFinder :forbidden-skills="skillsUri" @skill-selected="saveSkill" />
     </div>
   </div>
 </template>
@@ -38,6 +38,10 @@ export default class Home extends Vue {
   get skillsUri(): Set<string> {
     const uris: string[] = this.skills.map((s) => s.uri)
     return new Set(uris)
+  }
+
+  saveSkill(skill: Skill): void {
+    this.$store.commit('ADD_SKILL', skill)
   }
 }
 </script>

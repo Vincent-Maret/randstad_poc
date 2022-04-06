@@ -72,7 +72,7 @@ export default class SkillFinder extends Vue {
 
   selectSkill(skill: Skill): void {
     if (!this.forbiddenSkills.has(skill.uri)) {
-      this.$store.commit('ADD_SKILL', skill)
+      this.$emit('skill-selected', skill)
     }
   }
 }
