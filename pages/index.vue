@@ -18,7 +18,7 @@
     </div>
     <div>
       <h2>Add skills</h2>
-      <SkillFinder :forbidden-skills="skillsUri" @skill-selected="addSkill" />
+      <SkillFinder :forbidden-skills="skillsUri" />
     </div>
   </div>
 </template>
@@ -31,15 +31,13 @@ import { Skill } from '@/models/domain'
 
 @Component({ layout: 'dashboard', components: { SkillFinder, SkillCard } })
 export default class Home extends Vue {
-  skills: Skill[] = []
+  get skills(): Skill[] {
+    return this.$store.state.userSkills
+  }
 
   get skillsUri(): Set<string> {
     const uris: string[] = this.skills.map((s) => s.uri)
     return new Set(uris)
-  }
-
-  addSkill(skill: Skill): void {
-    this.skills.push(skill)
   }
 }
 </script>
