@@ -7,6 +7,8 @@ interface Result {
   className: string
   title: string
   uri: string
+  broaderHierarchyConcept?: string[]
+  broaderSkill?: string[]
 }
 
 export interface SearchResult {

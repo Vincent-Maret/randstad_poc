@@ -9,7 +9,7 @@ export async function searchSkill(
   text: string,
   type: Type = 'skill'
 ): Promise<SearchResult> {
-  const res = await axios.get(`${BASE_URL}/search`, {
+  const res = await axios.get(`${BASE_URL}/suggest2`, {
     params: {
       text,
       type,
