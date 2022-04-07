@@ -11,4 +11,3 @@ import { Vue, Component } from 'vue-property-decorator'
 export default class DefaultLayout extends Vue {}
 </script>
 
-<style lang="scss" scoped src="@/assets/style/main.scss"></style>
