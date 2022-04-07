@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Graphik-Regular';
+  src: url('Graphik-Regular.eot');
+  src: url('Graphik-Regular.eot?#iefix') format('embedded-opentype'),
+       url('Graphik-Regular.svg#Graphik-Regular') format('svg'),
+       url('Graphik-Regular.ttf') format('truetype'),
+       url('Graphik-Regular.woff') format('woff'),
+       url('Graphik-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+

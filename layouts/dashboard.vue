@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app">
     <Menu />
     <div class="page">
       <Nuxt />
@@ -14,6 +14,8 @@ import Menu from '@/components/menu/index.vue'
 @Component({ components: { Menu } })
 export default class DashboardLayout extends Vue {}
 </script>
+
+<style lang="scss" scoped src="@/assets/style/main.scss"></style>
 
 <style lang="scss" scoped>
 .page {

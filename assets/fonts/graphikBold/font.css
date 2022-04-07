@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'Graphik-Bold';
+  src: url('Graphik-Bold.eot');
+  src: url('Graphik-Bold.eot?#iefix') format('embedded-opentype'),
+       url('Graphik-Bold.svg#Graphik-Bold') format('svg'),
+       url('Graphik-Bold.ttf') format('truetype'),
+       url('Graphik-Bold.woff') format('woff'),
+       url('Graphik-Bold.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
