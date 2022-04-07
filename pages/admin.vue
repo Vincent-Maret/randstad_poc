@@ -15,10 +15,6 @@
       <BFormGroup label="description">
         <BFormTextarea v-model="jobData.description" />
       </BFormGroup>
-      <SkillFinder
-        :forbidden-skills="skillsUri"
-        @skill-selected="(skill) => jobData.skills.push(skill)"
-      />
       <BFormGroup label="Required profile">
         <BFormTextarea v-model="jobData.requiredProfile" />
       </BFormGroup>
@@ -46,12 +42,6 @@ export default class Admin extends Vue {
     requiredProfile: '',
     company: '',
     location: '',
-    skills: [],
-  }
-
-  get skillsUri(): Set<string> {
-    const uris: string[] = this.jobData.skills!.map((s) => s.uri)
-    return new Set(uris)
   }
 
   async submit() {
