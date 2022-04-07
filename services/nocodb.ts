@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { JobOffer } from '@/models/domain'
+import { JobOffer, Skill, SkillType, User } from '@/models/domain'
 
 const BASE_URL: string = 'https://randstaddb.herokuapp.com'
 const token =
@@ -29,4 +29,41 @@ export async function getJobOffers(): Promise<JobOffer[]> {
     ...jobOffer,
     skills: jobOffer.skills.data,
   }))
+}
+
+export async function getSkillsByType(type: SkillType): Promise<Skill[]> {
+  const res = await nocoDbAxios.get('/nc/randstad_3l3o/api/v1/skill', {
+    params: {
+      where: `(type,eq,${type})`,
+    },
+  })
+
+  return res.data
+}
+
+export async function searchSkillsByType(
+  type: SkillType,
+  text: string
+): Promise<Skill[]> {
+  const res = await nocoDbAxios.get('/nc/randstad_3l3o/api/v1/skill', {
+    params: {
+      where: `(type,eq,${type})~and(title,like,%${text}%)`,
+    },
+  })
+
+  return res.data
+}
+
+export async function getUser(id: number): Promise<User> {
+  const res = await nocoDbAxios.get(`/nc/randstad_3l3o/api/v1/user/${id}`)
+
+  // res.data.skills = res.data.skills ? res.data.skills.data : []
+
+  return res.data
+}
+
+export async function saveUser(user: User): Promise<void> {
+  const newUser = { ...user, skills: { data: user.skills } }
+
+  await nocoDbAxios.put(`/nc/randstad_3l3o/api/v1/user/${user.id}`, newUser)
 }

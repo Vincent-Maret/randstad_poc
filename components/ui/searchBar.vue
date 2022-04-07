@@ -25,7 +25,7 @@ export default class SearchBar extends Vue {
 
   @debounce(1000)
   submit(): void {
-    this.$emit('submitted')
+    this.$emit('submitted', this.value)
   }
 }
 </script>

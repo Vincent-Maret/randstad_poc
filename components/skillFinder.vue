@@ -1,79 +1,53 @@
 <template>
-  <div>
-    <BInputGroup class="search-bar">
-      <BInputGroupPrepend>
-        <BFormSelect v-model="searchedType" :options="availableSearchType" />
-      </BInputGroupPrepend>
-      <BFormInput v-model="searchedTerm" @keyup.enter="search" />
-      <BInputGroupAppend>
-        <BButton @click="search">Search</BButton>
-      </BInputGroupAppend>
-    </BInputGroup>
-    <div v-if="skills.length" class="d-flex flex-wrap mt-4">
-      <SkillCard
-        v-for="skill in skills"
-        :key="skill.uri"
-        :title="skill.title"
-        :clickable="true"
-        :disabled="forbiddenSkills.has(skill.uri)"
-        class="skill-card mb-2 mr-2"
-        @click="selectSkill(skill)"
-      />
-    </div>
+  <div class="skills-selection">
+    <SearchBar :placeholder="placeholder" @submitted="search" />
+
+    <section class="search-result mt-5">
+      <CustomButton
+        v-for="skill in searchResult"
+        :key="skill.id"
+        variant="light"
+        class="ml-2 mb-2"
+        @click="addSkill(skill)"
+      >
+        {{ skill.title }}
+      </CustomButton>
+    </section>
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
-import { searchSkill } from '@/services/esco'
-import { SearchResult, Type } from '@/models/esco'
-import { Skill } from '@/models/domain'
-import SkillCard from '@/components/skillCard.vue'
+import { Skill, SkillType } from '@/models/domain'
+import SearchBar from '@/components/ui/searchBar.vue'
+import CustomButton from '@/components/ui/customButton.vue'
+import Icon from '@/components/ui/icon/index.vue'
+import { searchSkillsByType } from '@/services/nocodb'
 
-@Component({ components: { SkillCard } })
+@Component({ components: { SearchBar, CustomButton, Icon } })
 export default class SkillFinder extends Vue {
-  @Prop({ required: true }) readonly forbiddenSkills!: Set<string>
+  @Prop({ required: true }) readonly skillType!: SkillType
+  @Prop({ required: true }) readonly userSkills!: Skill[]
 
-  searchedTerm: string = ''
-  searchedType: Type = 'skill'
-  searchResult: SearchResult | null = null
-  availableSearchType: Type[] = ['skill', 'occupation', 'concept']
+  searchResult: Skill[] = []
 
-  get skills(): Skill[] {
-    if (!this.searchResult) {
-      return []
+  get placeholder(): string {
+    switch (this.skillType) {
+      case 'hard':
+        return 'rechercher un hard skill'
+      case 'soft':
+        return 'rechercher un soft skill'
+      case 'lang':
+        return 'rechercher une langue'
     }
-
-    return this.searchResult._embedded.results.map((e) => {
-      const skill: Skill = {
-        title: e.title,
-        uri: e.uri,
-      }
-
-      if (e.broaderHierarchyConcept) {
-        skill.broaderHierarchyConcept = e.broaderHierarchyConcept
-      }
-      if (e.broaderSkill) {
-        skill.broaderSkill = e.broaderSkill
-      }
-
-      return skill
-    })
   }
 
-  async search(): Promise<void> {
-    if (this.searchedTerm.length < 2) {
-      return
-    }
-
-    const res = await searchSkill(this.searchedTerm, this.searchedType)
-    this.searchResult = res
+  async search(searchedText: string): Promise<void> {
+    this.searchResult = await searchSkillsByType(this.skillType, searchedText)
   }
 
-  selectSkill(skill: Skill): void {
-    if (!this.forbiddenSkills.has(skill.uri)) {
-      this.$emit('skill-selected', skill)
-    }
+  addSkill(skill: Skill): void {
+    this.$emit('skill-added', skill)
   }
 }
 </script>
@@ -81,5 +55,10 @@ export default class SkillFinder extends Vue {
 <style lang="scss" scoped>
 .search-bar {
   max-width: 600px;
+}
+
+.search-results {
+  display: flex;
+  flex-wrap: wrap;
 }
 </style>

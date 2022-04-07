@@ -1,19 +1,19 @@
 import { Module } from 'vuex'
-import { Skill } from '@/models/domain'
+import { User } from '@/models/domain'
 
 interface State {
-  userSkills: Skill[]
+  user: User
 }
 
 const mainModule: Module<State, State> = {
   // #region State
   state: () => ({
-    userSkills: [],
+    user: { id: 1, skills: [] },
   }),
   getters: {},
   mutations: {
-    ADD_SKILL(state, skill: Skill): void {
-      state.userSkills.push(skill)
+    SET_USER(state, user: User): void {
+      state.user = user
     },
   },
   actions: {},

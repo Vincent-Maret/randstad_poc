@@ -1,8 +1,9 @@
+export type SkillType = 'hard' | 'soft' | 'lang'
+
 export interface Skill {
+  id: number
   title: string
-  uri: string
-  broaderHierarchyConcept?: string[]
-  broaderSkill?: string[]
+  type: SkillType
 }
 
 export type JobId = number
@@ -21,7 +22,13 @@ export interface JobOffer {
   location: string
   type: JobType
 }
+
 export interface Score {
   value: number
   jobId: JobId
+}
+
+export interface User {
+  id: number
+  skills: Skill[]
 }
