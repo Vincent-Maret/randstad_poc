@@ -92,9 +92,11 @@
       </div>
     </section>
 
-    <CustomButton class="w-100 mt-4" height="3" font-size="1.2" @click="save">
-      Mes matchs
-    </CustomButton>
+    <NuxtLink to="/jobs">
+      <CustomButton class="w-100 mt-4" height="3" font-size="1.2" @click="save">
+        Mes matchs
+      </CustomButton>
+    </NuxtLink>
 
     <SkillModal ref="skillModal" />
   </div>
