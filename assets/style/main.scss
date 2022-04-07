@@ -23,6 +23,10 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--primary-color);
+}
 
-
+.transparent-button {
+  background: transparent;
+  border: none;
+  padding: 0;
 }
