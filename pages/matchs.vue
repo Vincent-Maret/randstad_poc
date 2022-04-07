@@ -1,18 +1,18 @@
 <template>
   <div class="p-4">
-    <JobCard v-for="job in jobOffers" :key="job.id" :job="job" />
+    <JobCard v-for="job in jobOffers" :key="job.id" class="mb-4" :job="job" />
   </div>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from 'nuxt-property-decorator'
 import JobCard from '@/components/jobCard.vue'
-import { getJobsMatchingScore } from '@/services/matcher'
+// import { getJobsMatchingScore } from '@/services/matcher'
 import { getJobOffers } from '@/services/nocodb'
 import { Score, Skill, JobOffer } from '@/models/domain'
 
-@Component({ layout: 'dashboard', components: { JobCard } })
-export default class Jobs extends Vue {
+@Component({ components: { JobCard } })
+export default class Matchs extends Vue {
   jobOffers: JobOffer[] = []
   matchingScores: Score[] = []
 
@@ -22,7 +22,7 @@ export default class Jobs extends Vue {
 
   async mounted(): Promise<void> {
     this.jobOffers = await getJobOffers()
-    this.matchingScores = getJobsMatchingScore(this.userSkills, this.jobOffers)
+    // this.matchingScores = getJobsMatchingScore(this.userSkills, this.jobOffers)
   }
 }
 </script>

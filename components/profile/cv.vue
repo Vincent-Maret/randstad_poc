@@ -92,7 +92,7 @@
       </div>
     </section>
 
-    <NuxtLink to="/jobs">
+    <NuxtLink to="/matchs">
       <CustomButton class="w-100 mt-4" height="3" font-size="1.2" @click="save">
         Mes matchs
       </CustomButton>
