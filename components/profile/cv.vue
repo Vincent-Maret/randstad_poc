@@ -93,7 +93,7 @@
     </section>
 
     <NuxtLink to="/matchs">
-      <CustomButton class="w-100 mt-4" height="3" font-size="1.2" @click="save">
+      <CustomButton class="w-100 mt-4" height="3" font-size="1.2">
         Mes matchs
       </CustomButton>
     </NuxtLink>
