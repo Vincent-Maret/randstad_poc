@@ -1,8 +1,11 @@
 <template>
   <div class="p-4">
-    <h1>Whatever title</h1>
+    <h1>Tes skills</h1>
     <div>
-      <h2>My skills</h2>
+      <h2>Hard skills</h2>
+      <AddSkillButton> ajouter un hard skill </AddSkillButton>
+    </div>
+    <div>
       <div v-if="skills.length" class="d-flex flex-wrap mt-4">
         <SkillCard
           v-for="skill in skills"
@@ -27,10 +30,11 @@
 import { Vue, Component } from 'nuxt-property-decorator'
 import SkillFinder from '@/components/skillFinder.vue'
 import SkillCard from '@/components/skillCard.vue'
+import AddSkillButton from '@/components/skill/addSkillButton.vue'
 import { Skill } from '@/models/domain'
 
-@Component({ layout: 'dashboard', components: { SkillFinder, SkillCard } })
-export default class Home extends Vue {
+@Component({ components: { AddSkillButton } })
+export default class SkillPage extends Vue {
   get skills(): Skill[] {
     return this.$store.state.userSkills
   }

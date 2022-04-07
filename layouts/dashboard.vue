@@ -15,7 +15,6 @@ import Menu from '@/components/menu/index.vue'
 export default class DashboardLayout extends Vue {}
 </script>
 
-<style lang="scss" scoped src="@/assets/style/main.scss"></style>
 
 <style lang="scss" scoped>
 .page {

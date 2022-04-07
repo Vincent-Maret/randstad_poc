@@ -1,8 +1,26 @@
 @import '../fonts/index';
 @import './colors';
 
+html {
+  font-size: 13px;
+}
+
 #app {
   font-family: 'Graphik-Regular';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  color: var(--primary-color);
+
+  h1,
+  h2 {
+    font-family: 'Graphik-Medium';
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
 }
