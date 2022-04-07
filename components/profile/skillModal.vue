@@ -5,7 +5,7 @@
         <button class="transparent-button mb-5" @click="hide">
           <Icon name="cross" size="2.2" color="var(--primary-color)" />
         </button>
-        <h2>Tes soft skills</h2>
+        <h2 class="mb-5">Tes soft skills</h2>
 
         <SkillFinder
           :skill-type="skillType"
