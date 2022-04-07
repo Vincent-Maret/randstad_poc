@@ -16,19 +16,13 @@ const nocoDbAxios = axios.create({
 export async function createJobOffer(
   jobData: Partial<JobOffer>
 ): Promise<void> {
-  await nocoDbAxios.post('/nc/randstad_3l3o/api/v1/jobOffer', {
-    ...jobData,
-    skills: { data: jobData.skills },
-  })
+  await nocoDbAxios.post('/nc/randstad_3l3o/api/v1/jobOffer', jobData)
 }
 
 export async function getJobOffers(): Promise<JobOffer[]> {
   const res = await nocoDbAxios.get('/nc/randstad_3l3o/api/v1/jobOffer')
 
-  return res.data.map((jobOffer: any) => ({
-    ...jobOffer,
-    skills: jobOffer.skills.data,
-  }))
+  return res.data
 }
 
 export async function getSkillsByType(type: SkillType): Promise<Skill[]> {

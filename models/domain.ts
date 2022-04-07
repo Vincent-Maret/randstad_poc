@@ -18,14 +18,9 @@ export interface JobOffer {
   description: string
   requiredProfile: string
   company: string
-  skills: Skill[]
   location: string
   type: JobType
-}
-
-export interface Score {
-  value: number
-  jobId: JobId
+  skillList: Skill[]
 }
 
 export interface User {
