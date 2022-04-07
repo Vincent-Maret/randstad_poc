@@ -5,7 +5,16 @@
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
 
-const availableIcons = ['job', 'cv', 'cross', 'search', 'edit', 'play'] as const
+const availableIcons = [
+  'job',
+  'cv',
+  'cross',
+  'search',
+  'edit',
+  'play',
+  'location',
+  'heart',
+] as const
 type AvailableIcons = typeof availableIcons[number]
 
 @Component({
@@ -16,6 +25,8 @@ type AvailableIcons = typeof availableIcons[number]
     search: () => import('./search.vue'),
     edit: () => import('./edit.vue'),
     play: () => import('./play.vue'),
+    heart: () => import('./heart.vue'),
+    location: () => import('./location.vue'),
   },
 })
 export default class IconWrapper extends Vue {
