@@ -5,7 +5,7 @@
         <button class="transparent-button mb-5" @click="hide">
           <Icon name="cross" size="2.2" color="var(--primary-color)" />
         </button>
-        <h2 class="mb-5">Tes soft skills</h2>
+        <h2 class="mb-5">{{ label }}</h2>
 
         <SkillFinder
           :skill-type="skillType"
@@ -15,7 +15,7 @@
 
         <section class="user-skills mt-5">
           <CustomButton
-            v-for="skill in userSkills"
+            v-for="skill in userSkillsByActiveType"
             :key="skill.id"
             variant="dark"
             class="ml-2 mb-2"
@@ -54,11 +54,24 @@ export default class SkillModal extends Vue {
     return new Set(this.userSkills.map((s) => s.id))
   }
 
-  mounted(): void {}
+  get label(): string {
+    switch (this.skillType) {
+      case 'hard':
+        return 'Tes hard skills'
+      case 'soft':
+        return 'Tes soft skills'
+      case 'lang':
+        return 'Tes langues'
+    }
+  }
+
+  get userSkillsByActiveType(): Skill[] {
+    return this.userSkills.filter((s) => s.type === this.skillType)
+  }
 
   show(skillType: SkillType): void {
-    this.userSkills = [...this.$store.state.user.skills]
     this.skillType = skillType
+    this.userSkills = [...this.$store.state.user.skills]
     this.displayState = true
   }
 
