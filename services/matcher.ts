@@ -1,5 +1,4 @@
-import { Skill, Score } from '@/models/domain'
-import { JobOffer } from '@/fakeDb'
+import { Skill, Score, JobOffer } from '@/models/domain'
 
 const substractSet = (
   originalSet: Set<string>,
