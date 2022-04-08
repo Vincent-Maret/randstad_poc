@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>Home</h1>
+    <nuxt-link :to="'/profile'">Profil</nuxt-link>
   </div>
 </template>
 
